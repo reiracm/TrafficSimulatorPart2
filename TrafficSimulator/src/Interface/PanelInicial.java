@@ -38,6 +38,7 @@ public class PanelInicial extends JPanel {
 		btnNewButton.setBounds(204, 255, 117, 25);
 		add(btnNewButton);
 		
+		//Crea label inicial
 		JLabel lblNewLabel = new JLabel();
 		lblNewLabel.setIcon(new ImageIcon("img/ultra.jpg"));
 		lblNewLabel.setBounds(0, 0, 520, 400);
