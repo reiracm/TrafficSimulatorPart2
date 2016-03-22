@@ -6,7 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import Logic.Calle;
-import Logic.Lista;
+import Logic.GList;
+import Logic.Vehiculo;
 
 import javax.swing.JLabel;
 import java.awt.SystemColor;
@@ -26,7 +27,7 @@ public class TrafficPanel extends JPanel {
 			setSize(1000, 800);
 			
 			
-			Lista listaCalles = new Lista();
+			GList listaCalles = new GList <Vehiculo,vehiculo>;
 			
 			int largo = 0;
 			
