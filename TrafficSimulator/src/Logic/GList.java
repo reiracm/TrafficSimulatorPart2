@@ -1,6 +1,6 @@
 package Logic;
 
-public abstract class GList<T,T2>{
+public abstract class GList<T>{
 	GNodo<T> _cabeza;
 	GNodo<T> _cola;
 
@@ -17,17 +17,15 @@ public abstract class GList<T,T2>{
 			_cola = nodo;
 		}
 	}
-
-	public abstract void eliminar(T2 key);
 	
-    public void eliminar(Integer key) {
-        if(_cabeza.getValor() == key){
+    public void eliminar(T dato) {
+        if(_cabeza.getValor() == dato){
             _cabeza = _cabeza.getSiguiente();           
         }
         else{
             GNodo<T> temp = _cabeza;
             while(temp.getSiguiente() != null){
-                if(temp.getSiguiente().getValor() == key){
+                if(temp.getSiguiente().getValor() == dato){
                     temp.setSiguiente(temp.getSiguiente().getSiguiente());
                     break;
                 }

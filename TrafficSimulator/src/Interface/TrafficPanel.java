@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 
 import Logic.Calle;
 import Logic.GList;
+import Logic.GenericList;
 import Logic.Vehiculo;
 
 import javax.swing.JLabel;
@@ -16,6 +17,7 @@ import java.util.Random;
 public class TrafficPanel extends JPanel {
 
 	private JFrame frame;
+	private Object listaCalles;
 
 	/**
 	 * Create the panel.
@@ -26,13 +28,13 @@ public class TrafficPanel extends JPanel {
 			setLayout(null);
 			setSize(1000, 800);
 			
-			
-			GList listaCalles = new GList <Vehiculo,vehiculo>;
+			GenericList<Calle> listaCalles = new GenericList <Calle>();			
 			
 			int largo = 0;
 			
 			while(largo < 5){
 				
+
 				Random posicionX = new Random();
 				int posX= (int) (posicionX.nextDouble()*100+1);	
 
@@ -42,7 +44,6 @@ public class TrafficPanel extends JPanel {
 				System.out.println(largo);
 				Calle calle = new Calle(posX,posY, 1000,10);
 				listaCalles.insertarAlFinal(calle);
-				
 				
 				JLabel calle1 = new JLabel("calle 1");
 				calle1.setBackground(Color.PINK);
