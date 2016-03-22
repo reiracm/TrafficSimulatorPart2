@@ -40,8 +40,7 @@ public class PanelInicial extends JPanel {
 		
 		//Crea label inicial
 		JLabel lblNewLabel = new JLabel();
-		lblNewLabel.setIcon(new ImageIcon("img/ultra.jpg"));
-		lblNewLabel.setBounds(0, 0, 520, 400);
+		lblNewLabel.setBounds(0, 0, 800, 800);
 		add(lblNewLabel);
 	}
 }
