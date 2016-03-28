@@ -6,7 +6,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import Logic.Calle;
-import Logic.GList;
 import Logic.GenericList;
 import Logic.Vehiculo;
 
@@ -34,9 +33,8 @@ public class TrafficPanel extends JPanel {
 			
 			while(largo < 5){
 				
-
 				Random posicionX = new Random();
-				int posX= (int) (posicionX.nextDouble()*100+1);	
+				int posX = (int) (posicionX.nextDouble()*100+1);
 
 				Random posicionY = new Random();
 				int posY= (int) (posicionY.nextDouble()*800+1);
