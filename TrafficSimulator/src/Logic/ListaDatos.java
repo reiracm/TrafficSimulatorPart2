@@ -1,4 +1,9 @@
 package Logic;
+/**
+ * 
+ * @author Ignacio Marin y Yenira Chacón
+ *
+ */
 
 public class ListaDatos {
 	// Puntero que indica la cabeza de la lista
@@ -14,15 +19,14 @@ public class ListaDatos {
         _largo = 0;
     }
     /**
-     * Agrega un nuevo nodo al final de la lista
+     * Agrega un nuevo nodo al final de la lista. Este método se utilizará para rescatar los datos
+     * contenidos en el archivo .xml y se puedan guardar en listas para luego crear los objetos. Cada 
+     * dato extraído del archivo .xml será de tipo entero.
      * @param pDATO, dato que queremos agregar 
      */
     public void insertarAlFinal(int pDATO){
-        // Define un nuevo nodo
         NodoDatos nuevoNodo = new NodoDatos();
-        // Agrega el dato al nodo
         nuevoNodo.setDato(pDATO);
-        // Consulta si la lista esta vacía
         if(_cabeza == null){
             //Inicializa la lista agregando como inicio y fin al nuevo nodo
             _cabeza = nuevoNodo;
@@ -38,6 +42,11 @@ public class ListaDatos {
         _largo++;
     }
     
+    /**
+     * Este método es utilizado para extraer cada dato en orden de la lista creada para los
+     * valores del archivo .xml
+     * @return cabeza
+     */
     public NodoDatos getIterator(){
     	return _cabeza;
     }

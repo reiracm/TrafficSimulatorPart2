@@ -11,7 +11,8 @@
       <señal> 0 </señal>
       <velocidadMaxi> 60 </velocidadMaxi>
       <distancia>40</distancia>
-      <pendiente>1</pendiente>
+      <interseccionX>1</interseccionX>
+      <interseccionY>1</interseccionY>
   </calle>
   
   <calle>
@@ -23,7 +24,8 @@
       <señal> 3 </señal>
       <velocidadMaxi> 80 </velocidadMaxi>
       <distancia>40</distancia>
-      <pendiente>1</pendiente>
+      <interseccionX>1</interseccionX>
+      <interseccionY>1</interseccionY>
   </calle>
   
     <vehiculo>

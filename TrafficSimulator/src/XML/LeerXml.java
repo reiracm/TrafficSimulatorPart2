@@ -12,6 +12,11 @@ import org.xml.sax.SAXException;
 import Logic.GenericList;
 import Logic.ListaDatos;
 
+/**
+ * 
+ * @author Ignacio Marin y Yenira Chacón
+ *
+ */
 public class LeerXml {
 	// Lista que contendrá listas con toda la información de las calles
 	GenericList<ListaDatos> infoCalles = new GenericList<ListaDatos>();
@@ -137,17 +142,29 @@ public class LeerXml {
                                   datosCalles.insertarAlFinal(distanciaCalle);
                                   System.out.println("distanciaCalle --> insertado");  
                                   
-                                  // Obtenemos la cabecera con la etiqueta "pendiente" que está dentro de la calle actual
-                                  NodeList pendiente = element.getElementsByTagName("pendiente");
-                                  // Seleccionamos la cabecera con la etiqueta "pendiente" dentro de la calle
-                                  Element datoPend = (Element) pendiente.item(0);
-                                  // Obtenemos el valor que está dentro de la etiqueta "pendiente" como un "String"
-                                  String pendienteString = datoPend.getFirstChild().getTextContent();
+                                  // Obtenemos la cabecera con la etiqueta "interseccionX" que está dentro de la calle actual
+                                  NodeList interseccionX = element.getElementsByTagName("interseccionX");
+                                  // Seleccionamos la cabecera con la etiqueta "interseccionX" dentro de la calle
+                                  Element datointerX = (Element) interseccionX.item(0);
+                                  // Obtenemos el valor que está dentro de la etiqueta "interseccionX" como un "String"
+                                  String interXString = datointerX.getFirstChild().getTextContent();
                                   // Convertimos el dato que obtuvimos en un entero
-                                  int pendienteCalle = Integer.parseInt(pendienteString.trim());
+                                  int interXCalle = Integer.parseInt(interXString.trim());
                                   // Añadimos el dato a nuestra lista de infomación del vehiculo
-                                  datosCalles.insertarAlFinal(pendienteCalle);
-                                  System.out.println("pendienteCalle --> insertado"); 
+                                  datosCalles.insertarAlFinal(interXCalle);
+                                  System.out.println("InterseccionXCalle --> insertado"); 
+                                  
+                                  // Obtenemos la cabecera con la etiqueta "interseccionY" que está dentro de la calle actual
+                                  NodeList interseccionY = element.getElementsByTagName("interseccionY");
+                                  // Seleccionamos la cabecera con la etiqueta "interseccionY" dentro de la calle
+                                  Element datointerY = (Element) interseccionY.item(0);
+                                  // Obtenemos el valor que está dentro de la etiqueta "interseccionY" como un "String"
+                                  String interYString = datointerY.getFirstChild().getTextContent();
+                                  // Convertimos el dato que obtuvimos en un entero
+                                  int interYCalle = Integer.parseInt(interYString.trim());
+                                  // Añadimos el dato a nuestra lista de infomación del vehiculo
+                                  datosCalles.insertarAlFinal(interYCalle);
+                                  System.out.println("InterseccionYCalle --> insertado"); 
 
                                   // Añadimos la lista con la información de la calle a la matriz que contiene todas las calles
                                   infoCalles.insertarAlFinal(datosCalles);
