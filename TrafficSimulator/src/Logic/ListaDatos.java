@@ -37,5 +37,9 @@ public class ListaDatos {
         // Incrementa el contador de tamaño de la lista
         _largo++;
     }
+    
+    public NodoDatos getIterator(){
+    	return _cabeza;
+    }
 
 }

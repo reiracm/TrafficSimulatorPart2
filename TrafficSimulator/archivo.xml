@@ -1,27 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<root>
-	<Calle nombre = "1">
-		<Campo>
-		<PosXIni></PosXIni>
-		<PosYIni></PosYIni>
-		<PosXFin></PosXFin>
-		<PosYFin></PosYFin>
-		<velocidadMax></velocidadMax>
-		<distancia></distancia>
-		<pendiente></pendiente>
-		</Campo>
-	</Calle>
-	<carro nombre = "carro">
-		<campo>
-		<tipo></tipo>
-		<velocidad></velocidad>
-		<velocidadVehiculo_X></velocidadVehiculo_X>
-		<velocidadVehiculo_Y></velocidadVehiculo_Y>
-		<probabilidadAveria></probabilidadAveria>
-		<probabilidadAccidente></probabilidadAccidente>
-		<pos_X></pos_X>
-		<pos_Y></pos_Y>
-		</campo>
-	</carro>
-</root>
+<simulacion>
+    
+  <calle>
+      <tipo> 1 </tipo>
+      <posX1> 20 </posX1>
+      <posY1> 30 </posY1>
+      <posX2> 23 </posX2>
+      <posY2> 45 </posY2>
+      <señal> 0 </señal>
+      <velocidadMaxi> 60 </velocidadMaxi>
+      <distancia>40</distancia>
+      <pendiente>1</pendiente>
+  </calle>
+  
+  <calle>
+      <tipo> 2 </tipo>
+      <posX1> 60 </posX1>
+      <posY1> 80 </posY1>
+      <posX2> 43 </posX2>
+      <posY2> 65 </posY2>
+      <señal> 3 </señal>
+      <velocidadMaxi> 80 </velocidadMaxi>
+      <distancia>40</distancia>
+      <pendiente>1</pendiente>
+  </calle>
+  
+    <vehiculo>
+      <tipo> 1 </tipo>
+      <velocidad> 80 </velocidad>
+      <largo> 3 </largo>
+      <ancho> 2 </ancho>
+      <probAveriarse> 40 </probAveriarse>
+      <probAccidente>10</probAccidente>
+      <pos_X>45</pos_X>
+      <pos_Y>21</pos_Y>
+   </vehiculo>
+  
+</simulacion>

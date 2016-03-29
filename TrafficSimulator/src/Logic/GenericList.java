@@ -23,10 +23,13 @@ public class GenericList <T> {
 		}
 		System.out.println("insertado");
 		
-/*		GNode<T> tmp = new GNode<T>(pdato);
-			tmp.setSiguiente(_head);
-			_head = tmp;*/
+		
 	}
+	
+	public GNodo<T> getIterator(){
+		return _cabeza;
+	}
+	
 
 }
 
