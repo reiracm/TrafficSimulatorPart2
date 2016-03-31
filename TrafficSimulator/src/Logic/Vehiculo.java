@@ -1,5 +1,9 @@
 package Logic;
 
+import java.awt.Color;
+
+import javax.swing.JLabel;
+
 public class Vehiculo {
 
 	private int _tipo;
@@ -14,6 +18,7 @@ public class Vehiculo {
 	private int _min_posY = 0;
 	private int _pos_X;
 	private int _pos_Y;
+	private GenericList<Vehiculo> lblVehiculo;
 	
 	public Vehiculo(int pTipo, int pVelocidad, int pLargo, int pAncho, int pProbAveria, int pProbAccidente, int pPos_X, int pPos_Y ){
 		this._tipo = pTipo;
@@ -25,6 +30,33 @@ public class Vehiculo {
 		this._pos_X = pPos_X;
 		this._pos_Y = pPos_Y;
 		
+	}
+	
+	public Vehiculo (GenerarVehiculosYCalles crear){
+		lblVehiculo = crear.getObjetosVehiculo();
+	}
+	
+	public void crearLblVehiculo(){
+		GNodo<Vehiculo> apuntador = lblVehiculo.getIterator();
+		while(apuntador!=null){
+			JLabel lblCar = new JLabel();
+			if(apuntador.getValor().get_tipo() == 1){
+				lblCar.setBounds(apuntador.getValor().get_pos_X(), apuntador.getValor().get_pos_Y(), 15, 7);
+				lblCar.setBackground(Color.WHITE);
+			}
+			else if(apuntador.getValor().get_tipo() == 2){
+				lblCar.setBounds(apuntador.getValor().get_pos_X(), apuntador.getValor().get_pos_Y(), 25, 7);
+				lblCar.setBackground(Color.BLUE);
+			}
+			else if(apuntador.getValor().get_tipo()== 3){
+				lblCar.setBounds(apuntador.getValor().get_pos_X(), apuntador.getValor().get_pos_Y(), 15, 9);
+				lblCar.setBackground(Color.YELLOW);
+			}
+			else if(apuntador.getValor().get_tipo() > 3){
+				lblCar.setBounds(apuntador.getValor().get_pos_X(), apuntador.getValor().get_pos_Y(), 10, 5);
+				lblCar.setBackground(Color.RED);
+			}
+		}
 	}
 
 	public int get_tipo() {

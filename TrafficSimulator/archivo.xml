@@ -4,15 +4,16 @@
     
   <calle>
       <tipo> 1 </tipo>
-      <posX1> 20 </posX1>
-      <posY1> 30 </posY1>
-      <posX2> 23 </posX2>
-      <posY2> 45 </posY2>
+      <puntoInicial> 20 </puntoInicial>
+      <puntoFinal> 30 </puntoFinal>
+      <posX> 23 </posX>
+      <posY> 45 </posY>
       <señal> 0 </señal>
       <velocidadMaxi> 60 </velocidadMaxi>
       <distancia>40</distancia>
       <interseccionX>1</interseccionX>
       <interseccionY>1</interseccionY>
+      <inclinacion>1</inclinacion>
   </calle>
   
   <calle>
@@ -26,6 +27,7 @@
       <distancia>40</distancia>
       <interseccionX>1</interseccionX>
       <interseccionY>1</interseccionY>
+      <inclinacion>1</inclinacion>
   </calle>
   
     <vehiculo>

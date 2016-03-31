@@ -83,16 +83,16 @@ public class GenerarVehiculosYCalles {
 			int type = apuntadorDos.getDato();
 			
 			apuntadorDos = apuntadorDos.getNext();
-			int XIni = apuntadorDos.getDato();
+			int pIni = apuntadorDos.getDato();
 			
 			apuntadorDos = apuntadorDos.getNext();
-			int YIni = apuntadorDos.getDato();
+			int pFini = apuntadorDos.getDato();
 			
 			apuntadorDos = apuntadorDos.getNext();
-			int XFini = apuntadorDos.getDato();
+			int Xpos = apuntadorDos.getDato();
 			
 			apuntadorDos = apuntadorDos.getNext();
-			int YFini = apuntadorDos.getDato();
+			int Ypos = apuntadorDos.getDato();
 
 			apuntadorDos = apuntadorDos.getNext();
 			int signal = apuntadorDos.getDato();
@@ -106,7 +106,10 @@ public class GenerarVehiculosYCalles {
 			apuntadorDos = apuntadorDos.getNext();
 			int intY = apuntadorDos.getDato();
 			
-			Calle calle = new Calle(type,XIni,YIni,XFini,YFini,signal,maxSpeed,intX,intY);
+			apuntadorDos = apuntadorDos.getNext();
+			int inclinacion = apuntadorDos.getDato();
+			
+			Calle calle = new Calle(type,pIni,pFini,Xpos,Ypos,signal,maxSpeed,intX,intY,inclinacion);
 			objetosCalle.insertarAlFinal(calle);
 			
 			apuntador = apuntador.getSiguiente();

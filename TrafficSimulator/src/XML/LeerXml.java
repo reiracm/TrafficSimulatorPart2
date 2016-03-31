@@ -59,7 +59,7 @@ public class LeerXml {
                                   System.out.println("tipoCalle --> insertado");
 
                                   // Obtenemos la cabecera con la etiqueta "posX1" que esta dentro de la calle actual
-                                  NodeList x1 = element.getElementsByTagName("posX1");
+                                  NodeList x1 = element.getElementsByTagName("puntoInicial");
                                   // Seleccionamos la cabecera con la etiqueta "posX1" dentro de la calle
                                   Element datoPosX1 = (Element) x1.item(0);
                                   // Obtenemos el valor que está dentro de la etiqueta "posX1" como un "String"
@@ -68,10 +68,10 @@ public class LeerXml {
                                   int posX1 = Integer.parseInt(posX1String.trim());
                                   // Añadimos el dato a nuestra lista de información de calle
                                   datosCalles.insertarAlFinal(posX1);
-                                  System.out.println("posX1 --> insertado");
+                                  System.out.println("puntoInicial --> insertado");
 
                                   //Obtenemos la cabecera con la etiqueta "posY1" que esta dentro de la calle actual
-                                  NodeList y1 = element.getElementsByTagName("posY1");
+                                  NodeList y1 = element.getElementsByTagName("puntoFinal");
                                   // Seleccionamos la cabecera con la etiqueta "posY1" dentro de la calle
                                   Element datoPosY1 = (Element) y1.item(0);
                                   // Obtenemos el valor que está adentro de la etiqueta "posY1" como un "String"
@@ -80,10 +80,10 @@ public class LeerXml {
                                   int posY1 = Integer.parseInt(posY1String.trim());
                                   // Añadimos el dato a nuestra lista de información de calle
                                   datosCalles.insertarAlFinal(posY1);
-                                  System.out.println("posY1 --> insertado");
+                                  System.out.println("puntoFinal --> insertado");
 
                                   // Obtenemos la cabecera con la etiqueta "posX2" que está dentro de la calle actual
-                                  NodeList x2 = element.getElementsByTagName("posX2");
+                                  NodeList x2 = element.getElementsByTagName("posX");
                                   // Seleccionamos la cabecera con la etiqueta "posX2" dentro de calle
                                   Element datoPosX2 = (Element) x2.item(0);
                                   // Obtenemos el valor que está adentro de la etiqueta "posX2" como un "String"
@@ -92,10 +92,10 @@ public class LeerXml {
                                   int posX2 = Integer.parseInt(posX2String.trim());
                                   // Añadimos el dato a nuestra lista de información de calle
                                   datosCalles.insertarAlFinal(posX2);
-                                  System.out.println("posX2 --> insertado");
+                                  System.out.println("posX --> insertado");
 
                                   // Obtenemos la cabecera con la etiqueta "posY2" que está adentro de la calle actual
-                                  NodeList y2 = element.getElementsByTagName("posY2");
+                                  NodeList y2 = element.getElementsByTagName("posY");
                                   // Seleccionamos la cabecera con la etiqueta "posY2" dentro de calle
                                   Element datoPosY2 = (Element) y2.item(0);
                                   // Obetenemos el valor que está adentro de la etiqueta "posY" como un "String"
@@ -104,7 +104,7 @@ public class LeerXml {
                                   int posY2 = Integer.parseInt(posY2String.trim());
                                   // Añadimos el dato a nuestra lista de información de calle
                                   datosCalles.insertarAlFinal(posY2);
-                                  System.out.println("posY2 --> insertado");
+                                  System.out.println("posY --> insertado");
 
                                   //Obtenemos la cabecera con la etiqueta "señal" que está adentro de la calle actual
                                   NodeList señal = element.getElementsByTagName("señal");
@@ -165,6 +165,18 @@ public class LeerXml {
                                   // Añadimos el dato a nuestra lista de infomación del vehiculo
                                   datosCalles.insertarAlFinal(interYCalle);
                                   System.out.println("InterseccionYCalle --> insertado"); 
+                                  
+                                  // Obtenemos la cabecera con la etiqueta "inclinacion" que está dentro de la calle actual
+                                  NodeList inclinacion = element.getElementsByTagName("inclinacion");
+                                  // Seleccionamos la cabecera con la etiqueta "inclinacion" dentro de la calle
+                                  Element datoinclinacion = (Element) inclinacion.item(0);
+                                  // Obtenemos el valor que está dentro de la etiqueta "interseccionY" como un "String"
+                                  String inclinacionString = datoinclinacion.getFirstChild().getTextContent();
+                                  // Convertimos el dato que obtuvimos en un entero
+                                  int inclinacionCalle = Integer.parseInt(inclinacionString.trim());
+                                  // Añadimos el dato a nuestra lista de infomación del vehiculo
+                                  datosCalles.insertarAlFinal(inclinacionCalle);
+                                  System.out.println("inclinacion --> insertado"); 
 
                                   // Añadimos la lista con la información de la calle a la matriz que contiene todas las calles
                                   infoCalles.insertarAlFinal(datosCalles);
