@@ -43,6 +43,21 @@ public class GenericList <T> {
 		return _cabeza;
 	}
 	
+	public boolean busqueda(Integer pValor) {
+        
+        GNodo<Integer> temp = (GNodo<Integer>) _cabeza;
+        
+        while(temp != null){
+            
+            if(temp.getValor() == pValor){
+                return true;
+            }
+            
+            temp = temp.getSiguiente();
+        }
+        
+        return false;
+    }
 
 }
 

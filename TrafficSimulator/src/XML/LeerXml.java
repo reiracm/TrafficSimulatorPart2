@@ -10,7 +10,6 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.w3c.dom.DOMException;
 import org.xml.sax.SAXException;
 import Logic.GenericList;
-import Logic.ListaDatos;
 
 /**
  * 
@@ -19,10 +18,10 @@ import Logic.ListaDatos;
  */
 public class LeerXml {
 	// Lista que contendrá listas con toda la información de las calles
-	GenericList<ListaDatos> infoCalles = new GenericList<ListaDatos>();
+	GenericList<GenericList> infoCalles = new GenericList<GenericList>();
 
     // Lista que contendrá listas con toda la información de los vehiculos
-    GenericList<ListaDatos> infoVehiculos = new GenericList<ListaDatos>(); 
+    GenericList<GenericList> infoVehiculos = new GenericList<GenericList>(); 
 
     /**
      * Método que lee el archivo XML y lo guarda en nuestras listas que contendrán la información de la simulación
@@ -42,7 +41,7 @@ public class LeerXml {
                         // Iteramos por todos los nodos que tienen la etiqueta "calle" para obtener sus valores
                         for (int i = 0; i < listaCalles.getLength(); i++) {
                                   // Creamos una lista que contendra los elementos de una calle que obtendremos del archivo XML
-                        		  ListaDatos datosCalles = new ListaDatos();
+                        		  GenericList<Integer> datosCalles = new GenericList<Integer>();
                                   // Seleccionamos la cabeza de la calle en la que estamos actualmente, ya que estamos iterando
                                   Element element = (Element) listaCalles.item(i);
 
@@ -83,28 +82,16 @@ public class LeerXml {
                                   System.out.println("puntoFinal --> insertado");
 
                                   // Obtenemos la cabecera con la etiqueta "posX2" que está dentro de la calle actual
-                                  NodeList x2 = element.getElementsByTagName("posX");
+                                  NodeList xe = element.getElementsByTagName("posEje");
                                   // Seleccionamos la cabecera con la etiqueta "posX2" dentro de calle
-                                  Element datoPosX2 = (Element) x2.item(0);
+                                  Element datoPosEje = (Element) xe.item(0);
                                   // Obtenemos el valor que está adentro de la etiqueta "posX2" como un "String"
-                                  String posX2String = datoPosX2.getFirstChild().getTextContent();
+                                  String posEString = datoPosEje.getFirstChild().getTextContent();
                                   // Convertimos el dato que obtuvimos en un entero
-                                  int posX2 = Integer.parseInt(posX2String.trim());
+                                  int posEje = Integer.parseInt(posEString.trim());
                                   // Añadimos el dato a nuestra lista de información de calle
-                                  datosCalles.insertarAlFinal(posX2);
-                                  System.out.println("posX --> insertado");
-
-                                  // Obtenemos la cabecera con la etiqueta "posY2" que está adentro de la calle actual
-                                  NodeList y2 = element.getElementsByTagName("posY");
-                                  // Seleccionamos la cabecera con la etiqueta "posY2" dentro de calle
-                                  Element datoPosY2 = (Element) y2.item(0);
-                                  // Obetenemos el valor que está adentro de la etiqueta "posY" como un "String"
-                                  String posY2String = datoPosY2.getFirstChild().getTextContent();
-                                  // Convertimos el dato que obtuvimos en un entero
-                                  int posY2 = Integer.parseInt(posY2String.trim());
-                                  // Añadimos el dato a nuestra lista de información de calle
-                                  datosCalles.insertarAlFinal(posY2);
-                                  System.out.println("posY --> insertado");
+                                  datosCalles.insertarAlFinal(posEje);
+                                  System.out.println("posEje --> insertado");
 
                                   //Obtenemos la cabecera con la etiqueta "señal" que está adentro de la calle actual
                                   NodeList señal = element.getElementsByTagName("señal");
@@ -142,30 +129,6 @@ public class LeerXml {
                                   datosCalles.insertarAlFinal(distanciaCalle);
                                   System.out.println("distanciaCalle --> insertado");  
                                   
-                                  // Obtenemos la cabecera con la etiqueta "interseccionX" que está dentro de la calle actual
-                                  NodeList interseccionX = element.getElementsByTagName("interseccionX");
-                                  // Seleccionamos la cabecera con la etiqueta "interseccionX" dentro de la calle
-                                  Element datointerX = (Element) interseccionX.item(0);
-                                  // Obtenemos el valor que está dentro de la etiqueta "interseccionX" como un "String"
-                                  String interXString = datointerX.getFirstChild().getTextContent();
-                                  // Convertimos el dato que obtuvimos en un entero
-                                  int interXCalle = Integer.parseInt(interXString.trim());
-                                  // Añadimos el dato a nuestra lista de infomación del vehiculo
-                                  datosCalles.insertarAlFinal(interXCalle);
-                                  System.out.println("InterseccionXCalle --> insertado"); 
-                                  
-                                  // Obtenemos la cabecera con la etiqueta "interseccionY" que está dentro de la calle actual
-                                  NodeList interseccionY = element.getElementsByTagName("interseccionY");
-                                  // Seleccionamos la cabecera con la etiqueta "interseccionY" dentro de la calle
-                                  Element datointerY = (Element) interseccionY.item(0);
-                                  // Obtenemos el valor que está dentro de la etiqueta "interseccionY" como un "String"
-                                  String interYString = datointerY.getFirstChild().getTextContent();
-                                  // Convertimos el dato que obtuvimos en un entero
-                                  int interYCalle = Integer.parseInt(interYString.trim());
-                                  // Añadimos el dato a nuestra lista de infomación del vehiculo
-                                  datosCalles.insertarAlFinal(interYCalle);
-                                  System.out.println("InterseccionYCalle --> insertado"); 
-                                  
                                   // Obtenemos la cabecera con la etiqueta "inclinacion" que está dentro de la calle actual
                                   NodeList inclinacion = element.getElementsByTagName("inclinacion");
                                   // Seleccionamos la cabecera con la etiqueta "inclinacion" dentro de la calle
@@ -176,7 +139,35 @@ public class LeerXml {
                                   int inclinacionCalle = Integer.parseInt(inclinacionString.trim());
                                   // Añadimos el dato a nuestra lista de infomación del vehiculo
                                   datosCalles.insertarAlFinal(inclinacionCalle);
-                                  System.out.println("inclinacion --> insertado"); 
+                                  System.out.println("inclinacion --> insertado");
+                                  
+                                  // Obtenemos la cabecera con la etiqueta "interseccionX" que está dentro de la calle actual
+                                  NodeList listaInterseccionX = element.getElementsByTagName("interseccionX");
+                                  for(int iInterX = 0; iInterX < listaInterseccionX.getLength(); iInterX++){
+                                	  // Seleccionamos la cabecera con la etiqueta "interseccionX" dentro de la calle
+                                	  Element datointerX = (Element) listaInterseccionX.item(iInterX);
+                                  	  // Obtenemos el valor que está dentro de la etiqueta "interseccionX" como un "String"
+                                  	  String interXString = datointerX.getFirstChild().getTextContent();
+                                  	  // Convertimos el dato que obtuvimos en un entero
+                                  	  int interXCalle = Integer.parseInt(interXString.trim());
+                                  	  // Añadimos el dato a nuestra lista de infomación del vehiculo
+                                  	  datosCalles.insertarAlFinal(interXCalle);
+                                  	  System.out.println("InterseccionXCalle --> insertado");
+                                  }
+                                  
+                                  // Obtenemos la cabecera con la etiqueta "interseccionY" que está dentro de la calle actual
+                                  NodeList listaInterseccionY = element.getElementsByTagName("interseccionY");
+                                  for(int iInterY = 0; iInterY < listaInterseccionY.getLength(); iInterY++){
+                                	  // Seleccionamos la cabecera con la etiqueta "interseccionY" dentro de la calle
+                                	  Element datointerY = (Element) listaInterseccionY.item(iInterY);
+                                	  // Obtenemos el valor que está dentro de la etiqueta "interseccionY" como un "String"
+                                	  String interYString = datointerY.getFirstChild().getTextContent();
+                                	  // Convertimos el dato que obtuvimos en un entero
+                                	  int interYCalle = Integer.parseInt(interYString.trim());
+                                	  // Añadimos el dato a nuestra lista de infomación del vehiculo
+                                	  datosCalles.insertarAlFinal(interYCalle);
+                                	  System.out.println("InterseccionYCalle --> insertado");
+                                  }
 
                                   // Añadimos la lista con la información de la calle a la matriz que contiene todas las calles
                                   infoCalles.insertarAlFinal(datosCalles);
@@ -190,7 +181,7 @@ public class LeerXml {
                         // Iteramos por todos los nodos que tienen la etiqueta "vehiculo" para obtener sus valores
                         for (int i = 0; i < listaVehiculos.getLength(); i++) {
                                   // Creamos una lista que contendrá los elementos de un vehiculo que obtendremos del archivo XML
-                                  ListaDatos datosVehiculo = new ListaDatos();
+                                  GenericList<Integer> datosVehiculo = new GenericList<Integer>();
                                   // Seleccionamos la cabeza del vehiculo en el que estamos actualmente, ya que estamos iterando
                                   Element element = (Element) listaVehiculos.item(i);
 
@@ -304,10 +295,10 @@ public class LeerXml {
       * Método "get" para así obtener toda la información de la calles
       * @return una lista (matriz) con sublistas de que contiene la información de una calle
       */
-	public GenericList<ListaDatos> getInfoVehiculos() {
+	public GenericList<GenericList> getInfoVehiculos() {
 		return infoVehiculos;
 	}
-	public GenericList<ListaDatos> getInfoCalles() {
+	public GenericList<GenericList> getInfoCalles() {
 		return infoCalles;
 	}
     

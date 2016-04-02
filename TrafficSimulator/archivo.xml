@@ -6,8 +6,7 @@
       <tipo> 1 </tipo>
       <puntoInicial> 20 </puntoInicial>
       <puntoFinal> 30 </puntoFinal>
-      <posX> 23 </posX>
-      <posY> 45 </posY>
+      <posEje> 23 </posEje>
       <señal> 0 </señal>
       <velocidadMaxi> 60 </velocidadMaxi>
       <distancia>40</distancia>
@@ -18,16 +17,15 @@
   
   <calle>
       <tipo> 2 </tipo>
-      <posX1> 60 </posX1>
-      <posY1> 80 </posY1>
-      <posX2> 43 </posX2>
-      <posY2> 65 </posY2>
+      <puntoInicial> 60 </puntoInicial>
+      <puntoFinal> 80 </puntoFinal>
+      <posEje> 43 </posEje>
       <señal> 3 </señal>
       <velocidadMaxi> 80 </velocidadMaxi>
       <distancia>40</distancia>
+      <inclinacion>1</inclinacion>
       <interseccionX>1</interseccionX>
       <interseccionY>1</interseccionY>
-      <inclinacion>1</inclinacion>
   </calle>
   
     <vehiculo>

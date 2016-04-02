@@ -10,9 +10,9 @@ import XML.LeerXml;
 public class GenerarVehiculosYCalles {
 
 	// Lista genérica que contendrá los datos obtenidos del XML de Calle
-	GenericList<ListaDatos>  datosCalle;
+	GenericList<GenericList>  datosCalle;
 	//Lista genérica que contendrá los datos obtenidos del XML de Vehiculo
-	GenericList<ListaDatos>  datosVehiculo;
+	GenericList<GenericList>  datosVehiculo;
 	//Lista Genérica que guardará objetos Vehiculo con los datos extraídos
 	GenericList<Vehiculo> objetosVehiculo = new GenericList<Vehiculo>();
 	//Lista Genérica que guardará objetos Calle con los datos extraídos
@@ -38,31 +38,31 @@ public class GenerarVehiculosYCalles {
 	 * el cual es otra sublista y de esta manera irá creando los objetos y guardandolos en una lista nueva.
 	 */
 	public void generarVehiculos(){
-		GNodo<ListaDatos> apuntador = datosVehiculo.getIterator();
+		GNodo<GenericList> apuntador = datosVehiculo.getIterator();
 		while(apuntador != null){
-			NodoDatos apuntadorDos = apuntador.getValor().getIterator();
-			int type = apuntadorDos.getDato();
+			GNodo<Integer> apuntadorDos = apuntador.getValor().getIterator();
+			int type = apuntadorDos.getValor();
 			
-			apuntadorDos = apuntadorDos.getNext();
-			int speed = apuntadorDos.getDato();
+			apuntadorDos = apuntadorDos.getSiguiente();
+			int speed = apuntadorDos.getValor();
 			
-			apuntadorDos = apuntadorDos.getNext();
-			int large = apuntadorDos.getDato();
+			apuntadorDos = apuntadorDos.getSiguiente();
+			int large = apuntadorDos.getValor();
 			
-			apuntadorDos = apuntadorDos.getNext();
-			int weigth = apuntadorDos.getDato();
+			apuntadorDos = apuntadorDos.getSiguiente();
+			int weigth = apuntadorDos.getValor();
 			
-			apuntadorDos = apuntadorDos.getNext();
-			int failure = apuntadorDos.getDato();
+			apuntadorDos = apuntadorDos.getSiguiente();
+			int failure = apuntadorDos.getValor();
 
-			apuntadorDos = apuntadorDos.getNext();
-			int accident = apuntadorDos.getDato();
+			apuntadorDos = apuntadorDos.getSiguiente();
+			int accident = apuntadorDos.getValor();
 
-			apuntadorDos = apuntadorDos.getNext();
-			int posX = apuntadorDos.getDato();
+			apuntadorDos = apuntadorDos.getSiguiente();
+			int posX = apuntadorDos.getValor();
 
-			apuntadorDos = apuntadorDos.getNext();
-			int posY = apuntadorDos.getDato();
+			apuntadorDos = apuntadorDos.getSiguiente();
+			int posY = apuntadorDos.getValor();
 			
 			Vehiculo car = new Vehiculo(type,speed,large,weigth,failure,accident,posX,posY);
 			objetosVehiculo.insertarAlFinal(car);
@@ -78,43 +78,43 @@ public class GenerarVehiculosYCalles {
 	 * el cual es otra sublista y de esta manera irá creando los objetos y guardandolos en una lista nueva.
 	 */
 	public void generarCalles(){
-		GNodo<ListaDatos> apuntador = datosCalle.getIterator();
-		ListaDatos interseccionX = new ListaDatos();
-		ListaDatos interseccionY = new ListaDatos();
+		GNodo<GenericList> apuntador = datosCalle.getIterator();
+		GenericList<Integer> interseccionX = new GenericList<Integer>();
+		GenericList<Integer> interseccionY = new GenericList<Integer>();
 		
 		while(apuntador != null){
-			NodoDatos apuntadorDos = apuntador.getValor().getIterator();
-			int type = apuntadorDos.getDato();
+			GNodo<Integer> apuntadorDos = apuntador.getValor().getIterator();
+			int type = apuntadorDos.getValor();
 			
-			apuntadorDos = apuntadorDos.getNext();
-			int pIni = apuntadorDos.getDato();
+			apuntadorDos = apuntadorDos.getSiguiente();
+			int pIni = apuntadorDos.getValor();
 			
-			apuntadorDos = apuntadorDos.getNext();
-			int pFini = apuntadorDos.getDato();
+			apuntadorDos = apuntadorDos.getSiguiente();
+			int pFini = apuntadorDos.getValor();
 			
-			apuntadorDos = apuntadorDos.getNext();
-			int Xpos = apuntadorDos.getDato();
+			apuntadorDos = apuntadorDos.getSiguiente();
+			int Xpos = apuntadorDos.getValor();
 			
-			apuntadorDos = apuntadorDos.getNext();
-			int Ypos = apuntadorDos.getDato();
+			apuntadorDos = apuntadorDos.getSiguiente();
+			int Ypos = apuntadorDos.getValor();
 
-			apuntadorDos = apuntadorDos.getNext();
-			int signal = apuntadorDos.getDato();
+			apuntadorDos = apuntadorDos.getSiguiente();
+			int signal = apuntadorDos.getValor();
 
-			apuntadorDos = apuntadorDos.getNext();
-			int maxSpeed = apuntadorDos.getDato();
+			apuntadorDos = apuntadorDos.getSiguiente();
+			int maxSpeed = apuntadorDos.getValor();
 			
-			apuntadorDos = apuntadorDos.getNext();
-			int inclinacion = apuntadorDos.getDato();
+			apuntadorDos = apuntadorDos.getSiguiente();
+			int inclinacion = apuntadorDos.getValor();
 
-			while(apuntadorDos.getNext()!= null){
+			while(apuntadorDos.getSiguiente()!= null){
 				
-				apuntadorDos = apuntadorDos.getNext();
-				int intX = apuntadorDos.getDato();
+				apuntadorDos = apuntadorDos.getSiguiente();
+				int intX = apuntadorDos.getValor();
 				interseccionX.insertarAlFinal(intX);
 			
-				apuntadorDos = apuntadorDos.getNext();
-				int intY = apuntadorDos.getDato();
+				apuntadorDos = apuntadorDos.getSiguiente();
+				int intY = apuntadorDos.getValor();
 				interseccionY.insertarAlFinal(intY);
 				
 			}
