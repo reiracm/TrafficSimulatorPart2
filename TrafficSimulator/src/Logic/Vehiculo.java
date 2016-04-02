@@ -4,7 +4,7 @@ import java.awt.Color;
 
 import javax.swing.JLabel;
 
-public class Vehiculo {
+public class Vehiculo extends Observable{
 
 	private int _tipo;
 	private int _velocidad;
@@ -19,6 +19,7 @@ public class Vehiculo {
 	private int _pos_X;
 	private int _pos_Y;
 	private GenericList<Vehiculo> lblVehiculo;
+	private int _idCalle;
 	
 	public Vehiculo(int pTipo, int pVelocidad, int pLargo, int pAncho, int pProbAveria, int pProbAccidente, int pPos_X, int pPos_Y ){
 		this._tipo = pTipo;
@@ -153,6 +154,14 @@ public class Vehiculo {
 
 	public void set_pos_Y(int _pos_Y) {
 		this._pos_Y = _pos_Y;
+	}
+
+	public int get_idCalle() {
+		return _idCalle;
+	}
+
+	public void set_idCalle(int _idCalle) {
+		this._idCalle = _idCalle;
 	}
 	
 }

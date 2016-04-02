@@ -11,9 +11,9 @@
       <señal> 0 </señal>
       <velocidadMaxi> 60 </velocidadMaxi>
       <distancia>40</distancia>
+      <inclinacion>1</inclinacion>
       <interseccionX>1</interseccionX>
       <interseccionY>1</interseccionY>
-      <inclinacion>1</inclinacion>
   </calle>
   
   <calle>

@@ -18,6 +18,7 @@ public class GenerarVehiculosYCalles {
 	//Lista Genérica que guardará objetos Calle con los datos extraídos
 	GenericList<Calle> objetosCalle = new GenericList<Calle>();
 	
+	
 	/**
 	 * Esos datos se guardan en nuevas variables para tener control sobre ellas
 	 * en está clase que Generará los objetos en listas.
@@ -78,6 +79,9 @@ public class GenerarVehiculosYCalles {
 	 */
 	public void generarCalles(){
 		GNodo<ListaDatos> apuntador = datosCalle.getIterator();
+		ListaDatos interseccionX = new ListaDatos();
+		ListaDatos interseccionY = new ListaDatos();
+		
 		while(apuntador != null){
 			NodoDatos apuntadorDos = apuntador.getValor().getIterator();
 			int type = apuntadorDos.getDato();
@@ -99,17 +103,24 @@ public class GenerarVehiculosYCalles {
 
 			apuntadorDos = apuntadorDos.getNext();
 			int maxSpeed = apuntadorDos.getDato();
-
-			apuntadorDos = apuntadorDos.getNext();
-			int intX = apuntadorDos.getDato();
-			
-			apuntadorDos = apuntadorDos.getNext();
-			int intY = apuntadorDos.getDato();
 			
 			apuntadorDos = apuntadorDos.getNext();
 			int inclinacion = apuntadorDos.getDato();
+
+			while(apuntadorDos.getNext()!= null){
+				
+				apuntadorDos = apuntadorDos.getNext();
+				int intX = apuntadorDos.getDato();
+				interseccionX.insertarAlFinal(intX);
 			
-			Calle calle = new Calle(type,pIni,pFini,Xpos,Ypos,signal,maxSpeed,intX,intY,inclinacion);
+				apuntadorDos = apuntadorDos.getNext();
+				int intY = apuntadorDos.getDato();
+				interseccionY.insertarAlFinal(intY);
+				
+			}
+			
+			
+			Calle calle = new Calle(type,pIni,pFini,Xpos,Ypos,signal,maxSpeed,interseccionX,interseccionY,inclinacion);
 			objetosCalle.insertarAlFinal(calle);
 			
 			apuntador = apuntador.getSiguiente();

@@ -13,12 +13,14 @@ public class Calle {
 	private int _posY;
 	private int _señal;
 	private int _velocidadMax;
-	private int _interseccion_X;
-	private int _interseccion_Y;
+	private ListaDatos _interseccion_X;
+	private ListaDatos _interseccion_Y;
 	private int _inclinacion;
 	private GenericList<Calle> lblCalle;
+	private static int indice = 0;
+	private int _id;
 
-	public Calle(int pTipo, int pPuntoInicial, int pPuntoFinal, int pPosX, int pPosY, int pSeñal,int pVelocidadMax,int pInterseccion_X, int pInterseccionY, int pInclinacion){
+	public Calle(int pTipo, int pPuntoInicial, int pPuntoFinal, int pPosX, int pPosY, int pSeñal,int pVelocidadMax,ListaDatos pInterseccion_X, ListaDatos pInterseccionY, int pInclinacion){
 		this._tipo = pTipo;
 		this._puntoInicial = pPuntoInicial;
 		this._puntoFinal = pPuntoFinal;
@@ -29,6 +31,8 @@ public class Calle {
 		this._interseccion_X = pInterseccion_X;
 		this._interseccion_Y = pInterseccionY;
 		this._inclinacion = pInclinacion;
+		_id = indice;
+		indice ++;
 		
 	}
 	
@@ -87,21 +91,30 @@ public class Calle {
 		this._velocidadMax = _velocidadMax;
 	}
 
-	public int get_interseccion_X() {
+	public ListaDatos get_interseccion_X() {
 		return _interseccion_X;
 	}
 
-	public void set_interseccion_X(int _interseccion_X) {
+	public void set_interseccion_X(ListaDatos _interseccion_X) {
 		this._interseccion_X = _interseccion_X;
 	}
 
-	public int get_interseccion_Y() {
+	public ListaDatos get_interseccion_Y() {
 		return _interseccion_Y;
 	}
 
-	public void set_interseccion_Y(int _interseccion_Y) {
+	public void set_interseccion_Y(ListaDatos _interseccion_Y) {
 		this._interseccion_Y = _interseccion_Y;
 	}
+
+	public int get_id() {
+		return _id;
+	}
+
+	public void set_id(int _id) {
+		this._id = _id;
+	}
+	
 	
 	
 }
