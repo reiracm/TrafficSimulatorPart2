@@ -1,5 +1,7 @@
 package Logic;
 
+import java.util.Random;
+
 /**
  * 
  * @author Yenira Chacón
@@ -38,6 +40,10 @@ public class ControladorTrafico implements Observer {
 		//Si las coordenadas del Vehiculo son iguales a las coordenadas de la interseccion, 
 		//debe escoger otra carretera
 		if ((busquedaInterseccionX == true) && (busquedaInterseccionY == true)){
+			Random rnd = new Random();
+			int num = (int) (rnd.nextDouble()*2+1);
+			if(num == 2){
+			}
 			
 		}
 		

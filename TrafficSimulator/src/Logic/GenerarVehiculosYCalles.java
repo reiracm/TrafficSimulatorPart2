@@ -93,10 +93,7 @@ public class GenerarVehiculosYCalles {
 			int pFini = apuntadorDos.getValor();
 			
 			apuntadorDos = apuntadorDos.getSiguiente();
-			int Xpos = apuntadorDos.getValor();
-			
-			apuntadorDos = apuntadorDos.getSiguiente();
-			int Ypos = apuntadorDos.getValor();
+			int posEje = apuntadorDos.getValor();
 
 			apuntadorDos = apuntadorDos.getSiguiente();
 			int signal = apuntadorDos.getValor();
@@ -107,9 +104,8 @@ public class GenerarVehiculosYCalles {
 			apuntadorDos = apuntadorDos.getSiguiente();
 			int inclinacion = apuntadorDos.getValor();
 
-			while(apuntadorDos.getSiguiente()!= null){
+			while(apuntadorDos != null){
 				
-				apuntadorDos = apuntadorDos.getSiguiente();
 				int intX = apuntadorDos.getValor();
 				interseccionX.insertarAlFinal(intX);
 			
@@ -117,10 +113,12 @@ public class GenerarVehiculosYCalles {
 				int intY = apuntadorDos.getValor();
 				interseccionY.insertarAlFinal(intY);
 				
+				apuntadorDos = apuntadorDos.getSiguiente();
+				
 			}
 			
 			
-			Calle calle = new Calle(type,pIni,pFini,Xpos,Ypos,signal,maxSpeed,interseccionX,interseccionY,inclinacion);
+			Calle calle = new Calle(type,pIni,pFini,posEje,signal,maxSpeed,interseccionX,interseccionY,inclinacion);
 			objetosCalle.insertarAlFinal(calle);
 			
 			apuntador = apuntador.getSiguiente();
@@ -143,7 +141,5 @@ public class GenerarVehiculosYCalles {
 	public GenericList<Calle> getObjetosCalle() {
 		return objetosCalle;
 	}
-	
-	
 
 }

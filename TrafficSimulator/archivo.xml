@@ -2,41 +2,55 @@
 
 <simulacion>
     
-  <calle>
-      <tipo> 1 </tipo>
-      <puntoInicial> 20 </puntoInicial>
-      <puntoFinal> 30 </puntoFinal>
-      <posEje> 23 </posEje>
-      <señal> 0 </señal>
-      <velocidadMaxi> 60 </velocidadMaxi>
-      <distancia>40</distancia>
-      <inclinacion>1</inclinacion>
-      <interseccionX>1</interseccionX>
-      <interseccionY>1</interseccionY>
-  </calle>
-  
-  <calle>
-      <tipo> 2 </tipo>
-      <puntoInicial> 60 </puntoInicial>
-      <puntoFinal> 80 </puntoFinal>
-      <posEje> 43 </posEje>
-      <señal> 3 </señal>
-      <velocidadMaxi> 80 </velocidadMaxi>
-      <distancia>40</distancia>
-      <inclinacion>1</inclinacion>
-      <interseccionX>1</interseccionX>
-      <interseccionY>1</interseccionY>
-  </calle>
-  
-    <vehiculo>
-      <tipo> 1 </tipo>
-      <velocidad> 80 </velocidad>
-      <largo> 3 </largo>
-      <ancho> 2 </ancho>
-      <probAveriarse> 40 </probAveriarse>
-      <probAccidente>10</probAccidente>
-      <pos_X>45</pos_X>
-      <pos_Y>21</pos_Y>
-   </vehiculo>
-  
+<calle>
+	<tipo> 1 </tipo>
+	<puntoInicial> 0 </puntoInicial>
+	<puntoFinal> 1000 </puntoFinal>
+	<posEje> 250 </posEje>
+	<señal> 0 </señal>
+	<velocidadMaxi> 60 </velocidadMaxi>
+	<distancia>40</distancia>
+	<inclinacion>1</inclinacion>
+	<interseccionX>1</interseccionX>
+	<interseccionY>1</interseccionY>
+	<interseccionX>2</interseccionX>
+	<interseccionY>2</interseccionY>
+</calle>
+
+<calle>
+	<tipo> 2 </tipo>
+	<puntoInicial> 0 </puntoInicial>
+	<puntoFinal> 1000 </puntoFinal>
+	<posEje> 400 </posEje>
+	<señal> 3 </señal>
+	<velocidadMaxi> 80 </velocidadMaxi>
+	<distancia>40</distancia>
+	<inclinacion>1</inclinacion>
+	<interseccionX>1</interseccionX>
+	<interseccionY>1</interseccionY>
+	</calle>
+<calle>
+	<tipo> 1 </tipo>
+	<puntoInicial> 0 </puntoInicial>
+	<puntoFinal> 1000 </puntoFinal>
+	<posEje> 550 </posEje>
+	<señal> 3 </señal>
+	<velocidadMaxi> 80 </velocidadMaxi>
+	<distancia>40</distancia>
+	<inclinacion>1</inclinacion>
+	<interseccionX>1</interseccionX>
+	<interseccionY>1</interseccionY>
+</calle>
+
+<vehiculo>
+	<tipo> 1 </tipo>
+	<velocidad> 80 </velocidad>
+	<largo> 3 </largo>
+	<ancho> 2 </ancho>
+	<probAveriarse> 40 </probAveriarse>
+	<probAccidente>10</probAccidente>
+	<pos_X>10</pos_X>
+	<pos_Y>251</pos_Y>
+</vehiculo> 
+ 
 </simulacion>

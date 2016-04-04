@@ -1,6 +1,9 @@
 package Interface;
 
 import javax.swing.JPanel;
+
+import Logic.Main;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
@@ -20,9 +23,9 @@ public class PanelInicial extends JPanel {
 	/**
 	 * Crea el panel inicial
 	 */
-	public PanelInicial(MainWindow frame) {
+	public PanelInicial(Main main) {
 		super();
-		this.frame = frame;
+		this.frame = main;
 		
 		setLayout(null);
 		
@@ -32,7 +35,7 @@ public class PanelInicial extends JPanel {
 			@Override
 			
 			public void actionPerformed(ActionEvent e) {
-				frame.changeContentPane(new TrafficPanel(frame));
+				main.changeContentPane(new TrafficPanel(main));
 			}
 		});
 		btnNewButton.setBounds(204, 255, 117, 25);
