@@ -31,7 +31,6 @@ public class GenericList <T> {
 			_cola.setSiguiente(nodo);
 			_cola = nodo;			
 		}
-		System.out.println("insertado");
 		
 		
 	}
@@ -40,8 +39,29 @@ public class GenericList <T> {
 	 * @return _cabeza = la cabeza será el dato hasta que cabeza sea igual a nulo
 	 */
 	public GNodo<T> getIterator(){
+		System.out.println(_cabeza == null);
 		return _cabeza;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	public boolean busqueda(Integer pValor) {
         

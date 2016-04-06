@@ -7,6 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Logic.Calle;
+import Logic.ControladorTrafico;
 import Logic.GNodo;
 import Logic.GenerarVehiculosYCalles;
 import Logic.GenericList;
@@ -18,10 +19,14 @@ public class TrafficPanel extends JPanel {
 	private JFrame frame;
 	private Object listaCalles;
 	private Vehiculo vehiculo;
-	
+	private boolean _alive = true;
+	private GenericList<JLabel> labelVehiculos = new GenericList<JLabel>();
 	private GenericList<GenericList<Integer>> listaDatos = new GenericList<GenericList<Integer>>();
 	 // Creamos una lista de "JLabel" para los vehiculos
 	private GenericList<JLabel> labelCalles = new GenericList<JLabel>();
+	private GenerarVehiculosYCalles vehiculosYCalles;
+	ControladorTrafico controlador = new ControladorTrafico(vehiculosYCalles.getObjetosCalle(),vehiculosYCalles.getObjetosVehiculo());
+	
 
 	/**
 	 * Se crea el panel de tráfico. Se crea un Lector Xml y se lee en el instante.
@@ -39,24 +44,24 @@ public class TrafficPanel extends JPanel {
 		LeerXml lector = new LeerXml();
 		lector.leerArchivoXml();
 		
-		GenerarVehiculosYCalles vehiculosYCalles = new GenerarVehiculosYCalles(lector);
+		vehiculosYCalles = new GenerarVehiculosYCalles(lector);
 	                    
 	    // Generamos la lista de objetos vehiculo
 	    vehiculosYCalles.generarVehiculos();
 	    
-	    GenericList<JLabel> labelVehiculos = new GenericList<JLabel>();
 	    // Creamos un lista (matriz) con sublistas que contendrán "enteros" de los datos de los vehiculos
 		GenericList<GenericList<Integer>> listaDatosVehiculos = new GenericList<GenericList<Integer>>();
 		
-	    GNodo<Vehiculo> nodoObjVehiculo = vehiculosYCalles.getObjetosVehiculo().getIterator();      
+	    GNodo<Vehiculo> vehiculos = vehiculosYCalles.getObjetosVehiculo().getIterator();      
 
-		while (nodoObjVehiculo != null){
+		while (vehiculos != null){
 	                              JLabel vehiculo = new JLabel();
+	                              vehiculos.getValor().start();
 	                              labelVehiculos.insertarAlFinal(vehiculo);
 	                              // Insertamos los datos del vehiculo a la lista de datos
-	                              listaDatosVehiculos.insertarAlFinal(nodoObjVehiculo.getValor().datosVehiculo());
+	                              listaDatosVehiculos.insertarAlFinal(vehiculos.getValor().datosVehiculo());
 	                              // Continuamos con el siguiente nodo de la lista de vehiculos
-	                              nodoObjVehiculo = nodoObjVehiculo.getSiguiente();
+	                              vehiculos = vehiculos.getSiguiente();
 		}
 	    // Se obtienen los nodos de la lista (matriz) de datos de los vehiculos
 		GNodo<GenericList<Integer>> iv1 = listaDatosVehiculos.getIterator();
@@ -145,7 +150,33 @@ public class TrafficPanel extends JPanel {
 		    if(ic1 != null){
 		    	ic2 = ic1.getValor().getIterator();
 		    }				
-	        }        
 	        }
+		
+		Thread t = new Thread(){
+			public void run(){
+				GNodo<JLabel> iterador = labelVehiculos.getIterator();
+				GenericList<Vehiculo> vehiculos = vehiculosYCalles.getObjetosVehiculo();
+				GNodo<Vehiculo> iteradorVehiculos = vehiculos.getIterator();
+				while(_alive){
+					while(iterador != null){
+						iterador.getValor().setBounds(iteradorVehiculos.getValor().get_pos_X(), iteradorVehiculos.getValor().get_pos_Y(), 15, 7);
+						iterador = iterador.getSiguiente();
+						iteradorVehiculos = iteradorVehiculos.getSiguiente();
+					}
+				try {
+					Thread.sleep(16);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			}
+		};
+		
+		t.start();
+	        }
+	
+	
+	
 
 }

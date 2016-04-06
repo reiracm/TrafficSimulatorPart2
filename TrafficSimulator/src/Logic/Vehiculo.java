@@ -4,7 +4,7 @@ import java.awt.Color;
 
 import javax.swing.JLabel;
 
-public class Vehiculo extends Observable{
+public class Vehiculo extends Observable {
 
 	private int _tipo;
 	private int _velocidad;
@@ -19,8 +19,15 @@ public class Vehiculo extends Observable{
 	private int _pos_X;
 	private int _pos_Y;
 	private GenericList<Vehiculo> lblVehiculo;
-	private int _idCalle;
+	private int _id;
 	private boolean _alive = true;
+	private int max_PosX = 800;
+	private int min_PosX = 0;
+	private int max_PosY = 800;
+	private int min_PosY = 0;
+	private int velocidad_X = 1;
+	private int velocidad_Y = 1;
+	
 	
 	/**
 	 * 
@@ -33,7 +40,7 @@ public class Vehiculo extends Observable{
 	 * @param pPos_X: posición X en el panel
 	 * @param pPos_Y: posición Y en el panel
 	 */
-	public Vehiculo(int pTipo, int pVelocidad, int pLargo, int pAncho, int pProbAveria, int pProbAccidente, int pPos_X, int pPos_Y ){
+	public Vehiculo(int pTipo, int pVelocidad, int pLargo, int pAncho, int pProbAveria, int pProbAccidente, int pPos_X, int pPos_Y , int pId){
 		this._tipo = pTipo;
 		this._largo = pLargo;
 		this._ancho = pAncho;
@@ -54,7 +61,7 @@ public class Vehiculo extends Observable{
 		lblVehiculo = crear.getObjetosVehiculo();
 	}
         
-                    public GenericList<Integer> datosVehiculo(){
+        public GenericList<Integer> datosVehiculo(){
 		GenericList<Integer> lista = new GenericList<Integer>();
 		if (this._tipo == 1){
 			lista.insertarAlFinal(this._pos_X);
@@ -70,10 +77,7 @@ public class Vehiculo extends Observable{
 		}
 		return lista;
 	}
-	
-
-
-	/**
+     /**
 	 * 
 	 * @return tipo de vehículo
 	 */
@@ -270,7 +274,7 @@ public class Vehiculo extends Observable{
 	 * @return _idCalle manera de identificar una calle
 	 */
 	public int get_idCalle() {
-		return _idCalle;
+		return _id;
 	}
 
 	/**
@@ -278,7 +282,73 @@ public class Vehiculo extends Observable{
 	 * @param _idCalle
 	 */
 	public void set_idCalle(int _idCalle) {
-		this._idCalle = _idCalle;
+		this._id = _idCalle;
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public int get_id() {
+		return _id;
+	}
+	
+	/**
+	 * 
+	 * @param _id
+	 */
+	public void set_id(int _id) {
+		this._id = _id;
+	}
+	/**
+	 * Hilo de movimiento del carro
+	 */
+	public void start() {
+		Thread start = new Thread(){
+			public void run(){
+				//mientras Alive sea= true va a ejecutar el hilo
+				while(_alive){
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				/**
+				 * Variable temporal que va a ser igual a la posicion actual en X+1 pixel que avanza
+				 * Si se pasa del máximo permitido se detiene el hilo
+				 */
+				int temp_x = _pos_X + velocidad_X;
+				if(temp_x < max_PosX && temp_x > min_PosX){
+					setChange();
+					_pos_X = temp_x;
+				}
+				
+				
+				else{
+					_alive = false;
+				}
+				/**
+				 * Variable temporal que va a ser igual a la posicion actual en Y+1 pixel que avanza
+				 * Si se pasa del máximo permitido se detiene el hilo
+				 */
+				int temp_y = _pos_Y + velocidad_Y;
+				if (temp_y > max_PosY && temp_y <min_PosY){
+					_pos_Y = temp_y;
+					setChange();
+				}
+				else{
+					_alive = false;
+				}
+				
+
+			}
+				
+			}
+		};
+		//Inicia el hilo
+		start.start();
+		
 	}
 	
 }

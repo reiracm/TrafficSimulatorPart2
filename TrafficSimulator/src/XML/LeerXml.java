@@ -55,7 +55,6 @@ public class LeerXml {
                                   int tipoCalle = Integer.parseInt(tipoCalleString.trim());
                                   // Añadimos el dato a nuestra lista de infomación de calle
                                   datosCalles.insertarAlFinal(tipoCalle);
-                                  System.out.println("tipoCalle --> insertado");
 
                                   // Obtenemos la cabecera con la etiqueta "posX1" que esta dentro de la calle actual
                                   NodeList x1 = element.getElementsByTagName("puntoInicial");
@@ -67,7 +66,6 @@ public class LeerXml {
                                   int posX1 = Integer.parseInt(posX1String.trim());
                                   // Añadimos el dato a nuestra lista de información de calle
                                   datosCalles.insertarAlFinal(posX1);
-                                  System.out.println("puntoInicial --> insertado");
 
                                   //Obtenemos la cabecera con la etiqueta "posY1" que esta dentro de la calle actual
                                   NodeList y1 = element.getElementsByTagName("puntoFinal");
@@ -79,7 +77,6 @@ public class LeerXml {
                                   int posY1 = Integer.parseInt(posY1String.trim());
                                   // Añadimos el dato a nuestra lista de información de calle
                                   datosCalles.insertarAlFinal(posY1);
-                                  System.out.println("puntoFinal --> insertado");
 
                                   // Obtenemos la cabecera con la etiqueta "posX2" que está dentro de la calle actual
                                   NodeList xe = element.getElementsByTagName("posEje");
@@ -91,7 +88,6 @@ public class LeerXml {
                                   int posEje = Integer.parseInt(posEString.trim());
                                   // Añadimos el dato a nuestra lista de información de calle
                                   datosCalles.insertarAlFinal(posEje);
-                                  System.out.println("posEje --> insertado");
 
                                   //Obtenemos la cabecera con la etiqueta "señal" que está adentro de la calle actual
                                   NodeList señal = element.getElementsByTagName("señal");
@@ -103,7 +99,6 @@ public class LeerXml {
                                   int tipoSeñal = Integer.parseInt(tipoSeñalString.trim());
                                   // Añadimos el dato a nuestra lista de información de calle
                                   datosCalles.insertarAlFinal(tipoSeñal);
-                                  System.out.println("señal --> insertado");
 
                                   // Obtenemos la cabecera con la etiqueta "velocidadMaxi" que está dentro de la calle actual
                                   NodeList vm = element.getElementsByTagName("velocidadMaxi");
@@ -114,8 +109,7 @@ public class LeerXml {
                                   // Convertimos el dato que obtuvimos en un entero
                                   int velocidadMaxi = Integer.parseInt(velocidadMaxiString.trim());
                                   // Añadimos el dato a nuestra lista de infomación del vehiculo
-                                  datosCalles.insertarAlFinal(velocidadMaxi);
-                                  System.out.println("velocidadMaxiCalle --> insertado");      
+                                  datosCalles.insertarAlFinal(velocidadMaxi);  
                                   
                                   // Obtenemos la cabecera con la etiqueta "distancia" que está dentro de la calle actual
                                   NodeList distancia = element.getElementsByTagName("distancia");
@@ -126,8 +120,7 @@ public class LeerXml {
                                   // Convertimos el dato que obtuvimos en un entero
                                   int distanciaCalle = Integer.parseInt(distanciaString.trim());
                                   // Añadimos el dato a nuestra lista de infomación del vehiculo
-                                  datosCalles.insertarAlFinal(distanciaCalle);
-                                  System.out.println("distanciaCalle --> insertado");  
+                                  datosCalles.insertarAlFinal(distanciaCalle);  
                                   
                                   // Obtenemos la cabecera con la etiqueta "inclinacion" que está dentro de la calle actual
                                   NodeList inclinacion = element.getElementsByTagName("inclinacion");
@@ -139,7 +132,17 @@ public class LeerXml {
                                   int inclinacionCalle = Integer.parseInt(inclinacionString.trim());
                                   // Añadimos el dato a nuestra lista de infomación del vehiculo
                                   datosCalles.insertarAlFinal(inclinacionCalle);
-                                  System.out.println("inclinacion --> insertado");
+
+                                  // Obtenemos la cabecera con la etiqueta "inclinacion" que está dentro de la calle actual
+                                  NodeList idCalle = element.getElementsByTagName("idCalle");
+                                  // Seleccionamos la cabecera con la etiqueta "inclinacion" dentro de la calle
+                                  Element datoId = (Element) idCalle.item(0);
+                                  // Obtenemos el valor que está dentro de la etiqueta "interseccionY" como un "String"
+                                  String idString = datoId.getFirstChild().getTextContent();
+                                  // Convertimos el dato que obtuvimos en un entero
+                                  int idcCalle = Integer.parseInt(idString.trim());
+                                  // Añadimos el dato a nuestra lista de infomación del vehiculo
+                                  datosCalles.insertarAlFinal(idcCalle);
                                   
                                   // Obtenemos la cabecera con la etiqueta "interseccionX" que está dentro de la calle actual
                                   NodeList listaInterseccionX = element.getElementsByTagName("interseccionX");
@@ -152,7 +155,7 @@ public class LeerXml {
                                   	  int interXCalle = Integer.parseInt(interXString.trim());
                                   	  // Añadimos el dato a nuestra lista de infomación del vehiculo
                                   	  datosCalles.insertarAlFinal(interXCalle);
-                                  	  System.out.println("InterseccionXCalle --> insertado");
+
                                   }
                                   
                                   // Obtenemos la cabecera con la etiqueta "interseccionY" que está dentro de la calle actual
@@ -166,13 +169,10 @@ public class LeerXml {
                                 	  int interYCalle = Integer.parseInt(interYString.trim());
                                 	  // Añadimos el dato a nuestra lista de infomación del vehiculo
                                 	  datosCalles.insertarAlFinal(interYCalle);
-                                	  System.out.println("InterseccionYCalle --> insertado");
                                   }
 
                                   // Añadimos la lista con la información de la calle a la matriz que contiene todas las calles
                                   infoCalles.insertarAlFinal(datosCalles);
-                                  System.out.println("calle " + i + " --> insertado");
-                                  System.out.println();
                         }
 
                         // "<vehiculo> ... </vehiculo>"
@@ -280,6 +280,18 @@ public class LeerXml {
                                   // Añadimos el dato a nuestra lista de infomación del vehiculo
                                   datosVehiculo.insertarAlFinal(pos_Y);
                                   System.out.println("posicion Y --> insertado"); 
+                                  
+                                  // Obtenemos la cabecera con la etiqueta "pos Y" que está dentro del vehiculo actual
+                                  NodeList idVehiculo = element.getElementsByTagName("idCalle");
+                                  // Seleccionamos la cabecera con la etiqueta "pos Y" dentro del vehiculo
+                                  Element datoIdVehiculo= (Element) idVehiculo.item(0);
+                                  // Obtenemos el valor que está dentro de la etiqueta "pos Y" como un "String"
+                                  String idVehiculoString = datoIdVehiculo.getFirstChild().getTextContent();
+                                  // Convertimos el dato que obtuvimos en un entero
+                                  int id = Integer.parseInt(idVehiculoString.trim());
+                                  // Añadimos el dato a nuestra lista de infomación del vehiculo
+                                  datosVehiculo.insertarAlFinal(pos_Y);
+                                  System.out.println("id Calle--> insertado"); 
 
                                   // Añadimos la lista con la información del vehiculo a la matriz que contiene todos los vehiculos
                                   infoVehiculos.insertarAlFinal(datosVehiculo);

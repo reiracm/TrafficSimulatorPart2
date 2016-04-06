@@ -11,6 +11,7 @@
 	<velocidadMaxi> 60 </velocidadMaxi>
 	<distancia>40</distancia>
 	<inclinacion>1</inclinacion>
+	<idCalle>1</idCalle>
 	<interseccionX>1</interseccionX>
 	<interseccionY>1</interseccionY>
 	<interseccionX>2</interseccionX>
@@ -26,6 +27,7 @@
 	<velocidadMaxi> 80 </velocidadMaxi>
 	<distancia>40</distancia>
 	<inclinacion>1</inclinacion>
+	<idCalle>1</idCalle>
 	<interseccionX>1</interseccionX>
 	<interseccionY>1</interseccionY>
 	</calle>
@@ -38,6 +40,7 @@
 	<velocidadMaxi> 80 </velocidadMaxi>
 	<distancia>40</distancia>
 	<inclinacion>1</inclinacion>
+	<idCalle>2</idCalle>
 	<interseccionX>1</interseccionX>
 	<interseccionY>1</interseccionY>
 </calle>
@@ -51,6 +54,7 @@
 	<probAccidente>10</probAccidente>
 	<pos_X>10</pos_X>
 	<pos_Y>251</pos_Y>
+	<idCalle>1</idCalle>
 </vehiculo> 
  
 </simulacion>

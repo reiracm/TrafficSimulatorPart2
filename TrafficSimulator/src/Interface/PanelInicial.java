@@ -36,6 +36,7 @@ public class PanelInicial extends JPanel {
 			
 			public void actionPerformed(ActionEvent e) {
 				main.changeContentPane(new TrafficPanel(main));
+				
 			}
 		});
 		btnNewButton.setBounds(204, 255, 117, 25);

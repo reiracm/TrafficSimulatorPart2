@@ -18,7 +18,6 @@ public class GenerarVehiculosYCalles {
 	//Lista Genérica que guardará objetos Calle con los datos extraídos
 	GenericList<Calle> objetosCalle = new GenericList<Calle>();
 	
-	
 	/**
 	 * Esos datos se guardan en nuevas variables para tener control sobre ellas
 	 * en está clase que Generará los objetos en listas.
@@ -64,12 +63,14 @@ public class GenerarVehiculosYCalles {
 			apuntadorDos = apuntadorDos.getSiguiente();
 			int posY = apuntadorDos.getValor();
 			
-			Vehiculo car = new Vehiculo(type,speed,large,weigth,failure,accident,posX,posY);
+			apuntadorDos = apuntadorDos.getSiguiente();
+			int idCalle= apuntadorDos.getValor();
+			
+			Vehiculo car = new Vehiculo(type,speed,large,weigth,failure,accident,posX,posY,idCalle);
 			objetosVehiculo.insertarAlFinal(car);
 			
 			apuntador = apuntador.getSiguiente();
 		}
-		
 	}
 	
 	/**
@@ -103,6 +104,9 @@ public class GenerarVehiculosYCalles {
 			
 			apuntadorDos = apuntadorDos.getSiguiente();
 			int inclinacion = apuntadorDos.getValor();
+			
+			apuntadorDos = apuntadorDos.getSiguiente();
+			int pId = apuntadorDos.getValor();
 
 			while(apuntadorDos != null){
 				
@@ -117,8 +121,7 @@ public class GenerarVehiculosYCalles {
 				
 			}
 			
-			
-			Calle calle = new Calle(type,pIni,pFini,posEje,signal,maxSpeed,interseccionX,interseccionY,inclinacion);
+			Calle calle = new Calle(type,pIni,pFini,posEje,signal,maxSpeed,pId,inclinacion, interseccionX, interseccionY);
 			objetosCalle.insertarAlFinal(calle);
 			
 			apuntador = apuntador.getSiguiente();

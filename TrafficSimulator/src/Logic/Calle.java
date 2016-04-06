@@ -17,8 +17,6 @@ public class Calle {
 		private GenericList<Integer> _interseccion_X;
 		private GenericList<Integer> _interseccion_Y;
 		private int _inclinacion;
-		private GenericList<Calle> lblCalle;
-		private static int indice = 0;
 		private int _id;
 
 		/**
@@ -30,22 +28,22 @@ public class Calle {
 		 * @param pPosY
 		 * @param pSeñal
 		 * @param pVelocidadMax
-		 * @param pInterseccion_X
-		 * @param pInterseccionY
-		 * @param pInclinacion
+		 * @param pId
+		 * @param inclinacion
+		 * @param interseccionX
+		 * @param pIdCalle
 		 */
-		public Calle(int pTipo, int pPuntoInicial, int pPuntoFinal, int pPosEje, int pSeñal,int pVelocidadMax,GenericList<Integer> pInterseccion_X, GenericList<Integer> pInterseccionY, int pInclinacion){
+		public Calle(int pTipo, int pPuntoInicial, int pPuntoFinal, int pPosEje, int pSeñal,int pVelocidadMax,int pId, int inclinacion, GenericList<Integer> interseccionX, GenericList<Integer> interseccionY){
 			this._tipo = pTipo;
 			this._puntoInicial = pPuntoInicial;
 			this._puntoFinal = pPuntoFinal;
 			this._posEje = pPosEje;
 			this._señal = pSeñal;
 			this._velocidadMax = pVelocidadMax;
-			this._interseccion_X = pInterseccion_X;
-			this._interseccion_Y = pInterseccionY;
-			this._inclinacion = pInclinacion;
-			_id = indice;
-			indice ++;
+			this._interseccion_X = interseccionX;
+			this._interseccion_Y = interseccionY;
+			this._inclinacion = inclinacion;
+			this._id = pId;
 			
 		}
 		/**
@@ -53,7 +51,7 @@ public class Calle {
 		 * @param crear
 		 */
 		public Calle(GenerarVehiculosYCalles crear){
-			lblCalle = crear.getObjetosCalle();
+			crear.getObjetosCalle();
 		}
 		
 		/**
@@ -76,29 +74,16 @@ public class Calle {
 			}
 			return lista;
 		}
-		
-		/*public void crearLblVehiculo(){
-			GNodo<Calle> apuntador = lblCalle.getIterator();
-			while(apuntador!=null){
-				JLabel lblCalle = new JLabel();
-				//Calle horizontal
-				if(apuntador.getValor().get_tipo() == 1){
-					lblCalle.setBounds(apuntador.getValor()._puntoInicial, apuntador.getValor()._posY, apuntador.getValor()._puntoFinal - apuntador.getValor()._puntoInicial , 10);
-					lblCalle.setBackground(Color.GRAY);
-				}
-				//Calle Vertical
-				else if(apuntador.getValor().get_tipo() == 2){
-					lblCalle.setBounds(apuntador.getValor()._posX, apuntador.getValor()._puntoInicial, 10, apuntador.getValor()._puntoFinal - apuntador.getValor()._puntoInicial);
-					lblCalle.setBackground(Color.GRAY);
-				}
-	/*			else if(apuntador.getValor().get_tipo()== 3){
-					lblCalle.setBounds(apuntador.getValor().get_pos_X(), apuntador.getValor().get_pos_Y(), 15, 9);
-					lblCalle.setBackground(Color.GRAY);
-				}
-				else if(apuntador.getValor().get_tipo() > 3){
-					lblCalle.setBounds(apuntador.getValor().get_pos_X(), apuntador.getValor().get_pos_Y(), 10, 5);
-					lblCalle.setBackground(Color.RED);
-				}*/
+		/**
+		 * Va a comparar los parámetros ingresados con la interseccion en X y Y de la calle
+		 * @param pInt_X
+		 * @param pInt_Y
+		 * @return true o false
+		 */
+		public boolean buscarIntersecciones(int pInt_X, int pInt_Y){
+			return _interseccion_X.busqueda(pInt_X) && _interseccion_Y.busqueda(pInt_Y);
+			
+		}
 		
 
 		/**
@@ -198,6 +183,7 @@ public class Calle {
 		public void set_id(int _id) {
 			this._id = _id;
 		}
+		
 		
 		
 		}
